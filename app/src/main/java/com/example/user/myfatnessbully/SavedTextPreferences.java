@@ -10,7 +10,7 @@ import android.preference.PreferenceManager;
 
 public class SavedTextPreferences {
 
-        private static final String PREF_SAVEDTEXT ="savedText";
+        private static final String PREF_SAVEDTEXT ="username";
 
         public static void setStoredText(Context context, String text){
             SharedPreferences sharedPreferences =
