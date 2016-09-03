@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.user.myfatnessbully.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/goals"
+        android:orderInCategory="100"
+        android:title="@string/goals"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/diary_main"
+        android:orderInCategory="100"
+        android:title="@string/diary_main"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/edit_diary"
+        android:orderInCategory="100"
+        android:title="@string/edit_diary"
+        app:showAsAction="never" />
+</menu>
