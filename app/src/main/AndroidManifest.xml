@@ -20,6 +20,18 @@
 
 
         </activity>
+
+        <activity
+            android:name=".DiarySummary"
+            android:label="@string/diary_main"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+
+        </activity>
     </application>
 
 </manifest>

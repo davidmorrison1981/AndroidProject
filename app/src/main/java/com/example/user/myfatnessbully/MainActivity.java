@@ -72,27 +72,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.summary:
+            if(item.getItemId() == R.id.summary) {
                 Intent intent = new Intent(MainActivity.this, DiarySummary.class);
 //                intent.putExtra("answer", answer);
                 startActivity(intent);
                 return true;
+            }
+//
+//            case R.id.goals:
+////                goals();
+//                return true;
+//
+//            case R.id.diary_main:
+////                diary();
+//                return true;
+//
+//            case R.id.edit_diary:
+////                editDiaty();
+//                return true;
 
-            case R.id.goals:
-//                goals();
-                return true;
-
-            case R.id.diary_main:
-//                diary();
-                return true;
-
-            case R.id.edit_diary:
-//                editDiaty();
-                return true;
-
-             default:
+//             default:
                 return super.onOptionsItemSelected(item);
-        }
+
     }
 }
