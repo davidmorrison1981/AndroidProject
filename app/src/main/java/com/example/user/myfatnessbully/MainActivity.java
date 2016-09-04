@@ -78,20 +78,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             }
-//
-//            case R.id.goals:
-////                goals();
-//                return true;
-//
-//            case R.id.diary_main:
-////                diary();
-//                return true;
-//
-//            case R.id.edit_diary:
-////                editDiaty();
-//                return true;
+            else if(item.getItemId() == R.id.goals) {
+                Intent intent = new Intent(MainActivity.this, Goal.class);
+//                intent.putExtra("answer", answer);
+                startActivity(intent);
+                return true;
+            }
+            else if(item.getItemId() == R.id.edit_diary) {
+                Intent intent = new Intent(MainActivity.this, EditDiary.class);
+//                intent.putExtra("answer", answer);
+                startActivity(intent);
+                return true;
+            }
 
-//             default:
+             else if(item.getItemId() == R.id.diary_main) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//                intent.putExtra("answer", answer);
+                startActivity(intent);
+                return true;
+            }
+//
+//
                 return super.onOptionsItemSelected(item);
 
     }
