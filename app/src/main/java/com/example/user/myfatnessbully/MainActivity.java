@@ -1,6 +1,7 @@
 package com.example.user.myfatnessbully;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mUsername = (EditText)findViewById(R.id.username);
-        mSaveUsername = (Button)findViewById(R.id.saveUsername);
-        mSavedText = (TextView)findViewById(R.id.saved_text);
+        mUsername = (EditText) findViewById(R.id.username);
+        mSaveUsername = (Button) findViewById(R.id.saveUsername);
+        mSavedText = (TextView) findViewById(R.id.saved_text);
         mSavedText.setVisibility(View.INVISIBLE);
 
         final String savedText = SavedTextPreferences.getStoredText(this);
-        if(savedText != null && !savedText.isEmpty()){
+        if (savedText != null && !savedText.isEmpty()) {
             mSaveUsername.setVisibility(View.VISIBLE);
             mUsername.setVisibility(View.VISIBLE);
             mSavedText.setText(savedText);
@@ -70,21 +71,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch ()item.getItemId() == R.id.summary){
-        return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.summary:
+                Intent intent = new Intent(MainActivity.this, DiarySummary.class);
+//                intent.putExtra("answer", answer);
+                startActivity(intent);
+                return true;
+
+            case R.id.goals:
+//                goals();
+                return true;
+
+            case R.id.diary_main:
+//                diary();
+                return true;
+
+            case R.id.edit_diary:
+//                editDiaty();
+                return true;
+
+             default:
+                return super.onOptionsItemSelected(item);
         }
-        else if(item.getItemId() == R.id.goals) {
-            return true;
-        }
-        else if(item.getItemId() == R.id.diary_main) {
-            return true;
-        }
-        else if(item.getItemId() == R.id.edit_diary) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
-
 }
-
