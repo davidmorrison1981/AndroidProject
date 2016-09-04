@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         mSavedText = (TextView)findViewById(R.id.saved_text);
         mSavedText.setVisibility(View.INVISIBLE);
 
-        String savedText = SavedTextPreferences.getStoredText(this);
+        final String savedText = SavedTextPreferences.getStoredText(this);
         if(savedText != null && !savedText.isEmpty()){
-            mSaveUsername.setVisibility(View.INVISIBLE);
-            mUsername.setVisibility(View.INVISIBLE);
+            mSaveUsername.setVisibility(View.VISIBLE);
+            mUsername.setVisibility(View.VISIBLE);
             mSavedText.setText(savedText);
-            mSavedText.setVisibility(View.VISIBLE);
+            mSavedText.setVisibility(View.INVISIBLE);
         }
 
         mSaveUsername.setOnClickListener(new View.OnClickListener() {
@@ -47,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
                 mSavedText.setVisibility(View.VISIBLE);
                 mSavedText.setText(textToSave);
                 Context context = v.getContext();
-                SavedTextPreferences.setStoredText(context, textToSave);
+                SavedTextPreferences.setStoredText(context, savedText);
             }
         });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,17 +70,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch ()item.getItemId() == R.id.summary){
+        return true;
+        }
+        else if(item.getItemId() == R.id.goals) {
             return true;
         }
-
+        else if(item.getItemId() == R.id.diary_main) {
+            return true;
+        }
+        else if(item.getItemId() == R.id.edit_diary) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
 }
+
