@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
-
 import java.util.Calendar;
 
 /**
@@ -29,6 +28,11 @@ public class EditDiary extends AppCompatActivity {
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day){
+
+
+        }
     }
 
     @Override
