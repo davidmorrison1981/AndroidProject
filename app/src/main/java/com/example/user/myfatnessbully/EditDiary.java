@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
+
 import java.util.Calendar;
 
 /**
@@ -14,7 +16,10 @@ import java.util.Calendar;
 // */
 public class EditDiary extends AppCompatActivity {
 
+
+
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        TextView mDateEdit;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -30,10 +35,12 @@ public class EditDiary extends AppCompatActivity {
 
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day){
-
+            mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
 
         }
+
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,7 @@ public class EditDiary extends AppCompatActivity {
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(this.getFragmentManager(), "datePicker");
+
     }
 
 

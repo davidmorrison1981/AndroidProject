@@ -11,8 +11,14 @@
         android:onClick="showDatePickerDialog" />
 
     <TextView
+        android:id="@+id/saved_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/pick_date"/>
+        android:layout_marginTop="25dp"
+        android:textSize="25dp"
+        android:text="@string/saved_date"
+        android:paddingLefta="125dp" />
+
+
 
 </LinearLayout>
