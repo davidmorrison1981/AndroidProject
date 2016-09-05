@@ -9,4 +9,8 @@
     <string name="saved_text">saved_text</string>
     <string name="pick_date">Select Date</string>
     <string name="saved_date">Saved_Date</string>
+    <string name="foodentry">Food</string>
+    <string name="calories">Calories</string>
+    <string name="submitToDiary">Submit</string>
+
 </resources>

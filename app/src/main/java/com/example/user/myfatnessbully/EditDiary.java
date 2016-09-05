@@ -16,10 +16,10 @@ import java.util.Calendar;
 // */
 public class EditDiary extends AppCompatActivity {
 
-
+    static TextView mDateEdit;
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-        TextView mDateEdit;
+
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -38,25 +38,28 @@ public class EditDiary extends AppCompatActivity {
             mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
 
         }
-
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_edit);
+        mDateEdit = (TextView) findViewById(R.id.saved_date);
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
     }
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(this.getFragmentManager(), "datePicker");
-
     }
 
 
 
 }
-    //}
 
 

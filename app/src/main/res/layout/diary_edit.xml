@@ -17,7 +17,33 @@
         android:layout_marginTop="25dp"
         android:textSize="25dp"
         android:text="@string/saved_date"
-        android:paddingLefta="125dp" />
+        android:paddingLeft="125dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:hint="@string/foodentry"
+        android:textSize="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="150dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/calories"
+        android:hint="@string/calories"
+        android:textSize="30dp"
+        android:layout_marginTop="-60dp"
+        android:layout_marginLeft="275dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/submitToDiary"
+        android:text="@string/submitToDiary"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="0dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 
 
 
