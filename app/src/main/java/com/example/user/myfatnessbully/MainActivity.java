@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button mSaveUsername;
-    EditText mUsername;
+    Button mSaveUserButton;
+    EditText mUsernameInput;
     TextView mSavedText;
 
     @Override
@@ -26,29 +27,30 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mUsername = (EditText) findViewById(R.id.username);
-        mSaveUsername = (Button) findViewById(R.id.saveUsername);
+        mUsernameInput = (EditText) findViewById(R.id.username);
+        mSaveUserButton = (Button) findViewById(R.id.saveUsername);
         mSavedText = (TextView) findViewById(R.id.saved_text);
         mSavedText.setVisibility(View.INVISIBLE);
 
+
         final String savedText = SavedTextPreferences.getStoredText(this);
         if (savedText != null && !savedText.isEmpty()) {
-            mSaveUsername.setVisibility(View.VISIBLE);
-            mUsername.setVisibility(View.VISIBLE);
+            mSaveUserButton.setVisibility(View.INVISIBLE);
+            mUsernameInput.setVisibility(View.INVISIBLE);
             mSavedText.setText(savedText);
-            mSavedText.setVisibility(View.INVISIBLE);
+            mSavedText.setVisibility(View.VISIBLE);
         }
 
-        mSaveUsername.setOnClickListener(new View.OnClickListener() {
+        mSaveUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textToSave = mUsername.getText().toString();
-                mSaveUsername.setVisibility(View.INVISIBLE);
-                mUsername.setVisibility(View.INVISIBLE);
+                String textToSave = mUsernameInput.getText().toString();
+                mSaveUserButton.setVisibility(View.INVISIBLE);
+                mUsernameInput.setVisibility(View.INVISIBLE);
                 mSavedText.setVisibility(View.VISIBLE);
                 mSavedText.setText(textToSave);
                 Context context = v.getContext();
-                SavedTextPreferences.setStoredText(context, savedText);
+                SavedTextPreferences.setStoredText(context, textToSave);
             }
         });
 

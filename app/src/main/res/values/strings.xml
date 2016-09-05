@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Androids Dont Eat</string>
+    <string name="app_name">Androids Dont Eat Carbs</string>
     <string name="action_settings">Summary Page</string>
     <string name="goals">Set Goals</string>
     <string name="diary_main">Home </string>
@@ -7,4 +7,5 @@
     <string name="username">username</string>
     <string name="saveUsername"> Save</string>
     <string name="saved_text">saved_text</string>
+    <string name="pick_date">Select Date</string>
 </resources>
