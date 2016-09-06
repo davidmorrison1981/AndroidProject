@@ -5,11 +5,13 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -22,13 +24,10 @@ public class EditDiary extends AppCompatActivity {
     Button mSubmitToDiaryButton;
     EditText mFoodInput;
     EditText mCalorieInput;
-    String savedFood;
-    String savedCalories;
+    final SqlHandler DB =((MainApplication)getApplication()).DB;
 
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-
-
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker
@@ -61,13 +60,24 @@ public class EditDiary extends AppCompatActivity {
         mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
 
         mSubmitToDiaryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               savedFood = mFoodInput.getText();
-               savedCalories = mCalorieInput.getText();
 
+            @Override
+            public void onClick(View view) {
+
+//              Date is retrieved from the onCreate method
+                String foodType = (mFoodInput.getText().toString());
+                Integer calories = Integer.parseInt(mCalorieInput.getText().toString());
+//              Integer wordCount = Integer.parseInt(mWordCount.getText().toString());
+//              Integer duration = Integer.parseInt(mDuration.getText().toString());
+
+
+                DiaryEntry entry = new DiaryEntry(foodType, calories);
+
+            DB.addToDiary(entry);
+            Toast.makeText(getApplicationContext(), "Saved TO Diary", Toast.LENGTH_LONG).show();
 
             }
+
         });
     }
 

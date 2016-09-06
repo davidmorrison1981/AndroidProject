@@ -40,7 +40,7 @@ public class SqlHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_DIARY_TABLE = "CREATE TABLE " + TABLE_ENTRIES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FOOD + " TEXT," +
-                KEY_CALORIES + "INT," + KEY_DATE + " TEXT" + KEY_CATEGORY + "TEXT"+ ")";
+                KEY_CALORIES + "NUMERIC," + KEY_DATE + " TEXT" + KEY_CATEGORY + "TEXT"+ ")";
         db.execSQL(CREATE_DIARY_TABLE);
     }
 

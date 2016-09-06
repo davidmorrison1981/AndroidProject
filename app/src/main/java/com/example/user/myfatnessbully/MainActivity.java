@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     EditText mUsernameInput;
     TextView mSavedText;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
