@@ -11,23 +11,21 @@ public class DiaryEntry {
     String food_type;
     int calories;
     String date;
+    String category;
 
     // Empty constructor
-    public DiaryEntry(){
+    public DiaryEntry(int i, String string, int anInt, String cursorString){
 
     }
     // constructor
-    public DiaryEntry(int id, String food_type, int calories, String date ){
+    public DiaryEntry(int id, String food_type, int calories, String date, String category ){
         this.id = id;
+        this.food_type = food_type;
         this.calories = calories;
         this.date = date;
+        this.category = category;
     }
 
-//    // constructor
-//    public DiaryEntry(String food_type, String date){
-//        this. = name;
-////        this._phone_number = _phone_number;
-//    }
     // getting ID
     public int getID(){
         return this.id;
@@ -49,7 +47,7 @@ public class DiaryEntry {
     }
 
     // getting calories
-    public int calories(){
+    public int getCalories(){
         return this.calories;
     }
 
@@ -65,6 +63,15 @@ public class DiaryEntry {
     // setting date
     public void setDate(String date){
         this.date = date;
+    }
+    // getting category
+    public String getCategory(){
+        return this.category;
+    }
+
+    // setting category
+    public void setCategory(String category){
+        this.category = category;
     }
 }
 

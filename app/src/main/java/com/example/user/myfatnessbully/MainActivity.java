@@ -20,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
     EditText mUsernameInput;
     TextView mSavedText;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final SqlHandler DB =((MainApplication)getApplication()).DB; //add to wherever the DB needs accessed
 
         mUsernameInput = (EditText) findViewById(R.id.username);
         mSaveUserButton = (Button) findViewById(R.id.saveUsername);
