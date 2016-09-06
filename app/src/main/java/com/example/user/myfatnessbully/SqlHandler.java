@@ -81,9 +81,9 @@ public class SqlHandler extends SQLiteOpenHelper {
 
         DiaryEntry diaryEntry = new DiaryEntry(
                 cursor.getString(0),
-                Integer.parseInt(cursor.getString(1)));
-
-
+                Integer.parseInt(cursor.getString(1)),
+                cursor.getString(2),
+                cursor.getString(3));
 
         // return row
         return diaryEntry;

@@ -18,9 +18,11 @@ public class DiaryEntry {
     }
 
     // constructor
-    public DiaryEntry(String food_type, int calories){
+    public DiaryEntry(String food_type, int calories, String date, String category){
         this.food_type = food_type;
         this.calories = calories;
+        this.date = date;
+        this.category = category;
     }
     // constructor
     public DiaryEntry(int id, String food_type, String date, String category ){
