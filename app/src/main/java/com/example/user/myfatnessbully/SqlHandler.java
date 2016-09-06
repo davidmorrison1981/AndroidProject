@@ -79,12 +79,16 @@ public class SqlHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        DiaryEntry diaryEntry = new DiaryEntry(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getInt(2), cursor.getString(3));
-        // return contact
+        DiaryEntry diaryEntry = new DiaryEntry(
+                Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),
+                cursor.getInt(2),
+                cursor.getString(3),
+                cursor.getString(4));
+
+        // return row
         return diaryEntry;
     }
-
     // Getting All Contacts
     public List<DiaryEntry> getAllEntries() {
         List<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
