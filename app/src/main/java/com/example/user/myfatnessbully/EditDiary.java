@@ -27,6 +27,7 @@ public class EditDiary extends AppCompatActivity {
 
 
 
+
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -59,29 +60,29 @@ public class EditDiary extends AppCompatActivity {
         int day = c.get(Calendar.DAY_OF_MONTH);
         mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
 
+        mSubmitToDiaryButton = (Button) findViewById(R.id.submitToDiary);
+        mFoodInput = (EditText) findViewById(R.id.foodType);
+        mCalorieInput = (EditText) findViewById(R.id.calories);
 
         mSubmitToDiaryButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View view) {
-                final SqlHandler DB =((MainApplication)getApplication()).DB;
+           @Override
+           public void onClick(View view) {
+               final SqlHandler DB =((MainApplication)getApplication()).DB;
 
-//              Date is retrieved from the onCreate method
-                String foodType = (mFoodInput.getText().toString());
+//              Retrieved from the onCreate method
+                String foodType = mFoodInput.getText().toString();
                 Integer calories = Integer.parseInt(mCalorieInput.getText().toString());
 //              Integer wordCount = Integer.parseInt(mWordCount.getText().toString());
 //              Integer duration = Integer.parseInt(mDuration.getText().toString());
 
-
                 DiaryEntry entry = new DiaryEntry(foodType, calories);
 
-            DB.addToDiary(entry);
-            Toast.makeText(getApplicationContext(), "Saved TO Diary", Toast.LENGTH_LONG).show();
-
-            }
-
-        });
-    }
+                DB.addToDiary(entry);
+                Toast.makeText(getApplicationContext(), "Saved To Diary", Toast.LENGTH_LONG).show();
+         }
+    });
+   }
 
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
