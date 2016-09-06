@@ -13,10 +13,6 @@ public class DiaryEntry {
     String date;
     String category;
 
-    // Empty constructor
-    public DiaryEntry(int i, String string, int anInt, String cursorString){
-
-    }
     // constructor
     public DiaryEntry(int id, String food_type, int calories, String date, String category ){
         this.id = id;
