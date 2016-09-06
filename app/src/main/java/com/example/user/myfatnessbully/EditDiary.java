@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,7 +99,7 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
         categories.add("Breakfast");
         categories.add("Lunch");
         categories.add("Supper");
-//                categories.add("Education");
+//                categories.add("Snacks");
 
 
         // Creating adapter for spinner

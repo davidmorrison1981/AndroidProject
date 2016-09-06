@@ -38,9 +38,9 @@ public class SqlHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_DIARY_TABLE = "CREATE TABLE " + TABLE_ENTRIES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FOOD + " TEXT," +
-                KEY_CALORIES + "NUMERIC," + KEY_DATE + " TEXT" + KEY_CATEGORY + "TEXT"+ ")";
+        String CREATE_DIARY_TABLE = " CREATE TABLE " + TABLE_ENTRIES + "("
+                + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_FOOD + " TEXT, " +
+                KEY_CALORIES + " INTEGER, " + KEY_DATE + " TEXT " + KEY_CATEGORY + " TEXT "+ ")";
         db.execSQL(CREATE_DIARY_TABLE);
     }
 
@@ -48,7 +48,7 @@ public class SqlHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRIES);
+        db.execSQL(" DROP TABLE IF EXISTS " + TABLE_ENTRIES);
 
         // Create tables again
         onCreate(db);
@@ -74,7 +74,7 @@ public class SqlHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_ENTRIES, new String[]{KEY_ID,
-                        KEY_FOOD, KEY_CALORIES, KEY_DATE, KEY_CATEGORY}, KEY_ID + "=?",
+                        KEY_FOOD, KEY_CALORIES, KEY_DATE, KEY_CATEGORY}, KEY_ID + "=? ",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
@@ -83,7 +83,8 @@ public class SqlHandler extends SQLiteOpenHelper {
                 cursor.getString(0),
                 Integer.parseInt(cursor.getString(1)),
                 cursor.getString(2),
-                cursor.getString(3));
+                cursor.getString(3)
+        );
 
         // return row
         return diaryEntry;

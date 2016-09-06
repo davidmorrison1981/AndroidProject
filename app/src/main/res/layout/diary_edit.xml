@@ -46,7 +46,7 @@
     <Button
         android:id="@+id/submitToDiary"
         android:text="@string/submitToDiary"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="0dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
