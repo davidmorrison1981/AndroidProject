@@ -89,8 +89,8 @@ public class SqlHandler extends SQLiteOpenHelper {
         return diaryEntry;
     }
     // Getting All Contacts
-    public List<DiaryEntry> getAllEntries() {
-        List<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
+    public ArrayList<DiaryEntry> getAllEntries() {
+        ArrayList<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES;
 

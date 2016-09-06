@@ -1,14 +1,5 @@
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
 
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
@@ -18,27 +9,52 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="Breakfast">
+                android:textSize="20sp"
+                android:text="Breakfast"/>
 
-
-
-            </TextView>
+            <ListView
+                android:id="@+id/breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:text="@string/breakfast"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="Lunch"></TextView>
+                android:textSize="20sp"
+                android:text="Lunch"/>
+            <ListView
+                android:id="@+id/lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="69dp"
+                android:text="@string/lunch"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="Supper"></TextView>
+                android:textSize="20sp"
+                android:text="Supper"/>
+            <ListView
+                android:id="@+id/supper"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:text="@string/supper"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right" />
+
         </LinearLayout>
 
-    </ScrollView>
 
 
-<!--</LinearLayout>-->
+

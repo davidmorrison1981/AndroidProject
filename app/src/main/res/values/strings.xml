@@ -12,5 +12,8 @@
     <string name="foodentry">Food</string>
     <string name="calories">Calories</string>
     <string name="submitToDiary">Submit</string>
+    <string name="breakfast">Breakfast goes here</string>
+    <string name="lunch">Lunch goes here</string>
+    <string name="supper">Supper goes here</string>
 
 </resources>
