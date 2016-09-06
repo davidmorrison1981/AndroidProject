@@ -48,4 +48,13 @@
         android:text="@string/saved_text"
         android:paddingLeft="125dp" />
 
+    <Button
+        android:id="@+id/saveUsername"
+        android:text="@string/saveUsername"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
 </android.support.design.widget.CoordinatorLayout>

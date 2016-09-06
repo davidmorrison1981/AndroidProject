@@ -13,16 +13,24 @@ public class DiaryEntry {
     String date;
     String category;
 
+    // empty constructor
+    public DiaryEntry(){
+    }
+
     // constructor
-    public DiaryEntry(int id, String food_type, int calories, String date, String category ){
-        this.id = id;
+    public DiaryEntry(String food_type, int calories){
         this.food_type = food_type;
         this.calories = calories;
+    }
+    // constructor
+    public DiaryEntry(int id, String food_type, String date, String category ){
+        this.id = id;
+        this.food_type = food_type;
         this.date = date;
         this.category = category;
     }
 
-    // getting ID
+        // getting ID
     public int getID(){
         return this.id;
     }

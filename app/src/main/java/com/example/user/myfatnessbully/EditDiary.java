@@ -24,7 +24,7 @@ public class EditDiary extends AppCompatActivity {
     Button mSubmitToDiaryButton;
     EditText mFoodInput;
     EditText mCalorieInput;
-    final SqlHandler DB =((MainApplication)getApplication()).DB;
+
 
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -59,10 +59,12 @@ public class EditDiary extends AppCompatActivity {
         int day = c.get(Calendar.DAY_OF_MONTH);
         mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
 
+
         mSubmitToDiaryButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                final SqlHandler DB =((MainApplication)getApplication()).DB;
 
 //              Date is retrieved from the onCreate method
                 String foodType = (mFoodInput.getText().toString());
