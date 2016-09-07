@@ -25,6 +25,25 @@ public class DiarySummary extends AppCompatActivity {
     Button mAddToDiaryButton2;
     Button mAddToDiaryButton3;
     Button mPickDate;
+    static TextView mDateFilter;
+
+    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day){
+            mDateFilter.setText(day + "/" + (month + 1) + "/" + year);
+        }}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +55,7 @@ public class DiarySummary extends AppCompatActivity {
         mAddToDiaryButton2 = (Button) findViewById(R.id.lunchAdd);
         mAddToDiaryButton3 = (Button) findViewById(R.id.supperAdd);
         mPickDate = (Button) findViewById(R.id.pickDate);
+        mDateFilter = (TextView) findViewById(R.id.datefilter);
 
         final SqlHandler DB = ((MainApplication)getApplication()).DB;
 
@@ -72,6 +92,7 @@ public class DiarySummary extends AppCompatActivity {
             public void onClick(View view) {
                 showDatePickerDialog(view);
             }
+
         });
 
 
@@ -97,11 +118,16 @@ public class DiarySummary extends AppCompatActivity {
         listView3.setAdapter(adapter_supper);
 
 
-    }
+        }
+
+
+
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new EditDiary.DatePickerFragment();
+        DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(this.getFragmentManager(), "datePicker");
+
     }
+
 
 
 }

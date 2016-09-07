@@ -69,6 +69,35 @@ public class SqlHandler extends SQLiteOpenHelper {
             DB.close(); // Closing database connection
 
     }
+    //get by date
+    public ArrayList<DiaryEntry> getByDate(String mDateFilter) {
+        ArrayList<DiaryEntry> byDateList = new ArrayList<DiaryEntry>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES +" WHERE "+ KEY_DATE + " = mDateFilter ";
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DiaryEntry diaryEntry = new DiaryEntry();
+                diaryEntry.setID(Integer.parseInt(cursor.getString(0)));
+                diaryEntry.setFoodType(cursor.getString(1));
+                diaryEntry.setCalories(cursor.getInt(2));
+                diaryEntry.setDate(cursor.getString(3));
+                diaryEntry.setCategory(cursor.getString(4));
+                // Adding contact to list
+                byDateList.add(diaryEntry);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return byDateList;
+    }
+
+
+
 
     // Getting single row
     public DiaryEntry getDiaryEntry(int id) {
