@@ -69,6 +69,7 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
         mCalorieInput = (EditText) findViewById(R.id.calories);
         mCategory = (Spinner) findViewById(R.id.category);
 
+
         mSubmitToDiaryButton.setOnClickListener(new View.OnClickListener() {
 
            @Override
@@ -76,10 +77,10 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
                final SqlHandler DB =((MainApplication)getApplication()).DB;
 
 //              Retrieved from the onCreate method
-                String foodType = mFoodInput.getText().toString();
+               String foodType = mFoodInput.getText().toString();
                 Integer calories = Integer.parseInt(mCalorieInput.getText().toString());
                 String date = mDateEdit.getText().toString();
-                String category = mCategory.toString();
+                String category = mCategory.getSelectedItem().toString();
 
                 DiaryEntry entry = new DiaryEntry(foodType, calories, date, category);
 

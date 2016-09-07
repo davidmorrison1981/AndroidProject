@@ -79,6 +79,12 @@ public class DiaryEntry {
     public void setCategory(String category){
         this.category = category;
     }
+
+    @Override
+    public String toString(){
+        return this.date + " - " + this.food_type + " - " + this.calories ;
+    }
+
 }
 
 

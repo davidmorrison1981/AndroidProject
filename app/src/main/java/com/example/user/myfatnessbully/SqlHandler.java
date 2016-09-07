@@ -58,7 +58,6 @@ public class SqlHandler extends SQLiteOpenHelper {
             SQLiteDatabase DB = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(KEY_ID, diaryEntry.getID()); // ID
             values.put(KEY_FOOD, diaryEntry.getFoodType()); // Food Type
             values.put(KEY_CALORIES, diaryEntry.getCalories()); // Calories
             values.put(KEY_DATE, diaryEntry.getDate()); // Date
@@ -90,7 +89,34 @@ public class SqlHandler extends SQLiteOpenHelper {
         // return row
         return diaryEntry;
     }
-    // Getting All Contacts
+    // Getting All Entries
+    public ArrayList<DiaryEntry> getAllEntries() {
+        ArrayList<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES;
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DiaryEntry diaryEntry = new DiaryEntry();
+                diaryEntry.setID(Integer.parseInt(cursor.getString(0)));
+                diaryEntry.setFoodType(cursor.getString(1));
+                diaryEntry.setCalories(cursor.getInt(2));
+                diaryEntry.setDate(cursor.getString(3));
+                diaryEntry.setCategory(cursor.getString(4));
+                // Adding contact to list
+                entriesList.add(diaryEntry);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return entriesList;
+    }
+
+    // Getting Breakfast
     public ArrayList<DiaryEntry> getAllEntries() {
         ArrayList<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
         // Select All Query
