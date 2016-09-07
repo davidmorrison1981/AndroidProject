@@ -24,46 +24,18 @@ public class DiarySummary extends AppCompatActivity {
     Button mAddToDiaryButton1;
     Button mAddToDiaryButton2;
     Button mAddToDiaryButton3;
-//    static TextView mDateEdit;
-//
-//    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
-//        @Override
-//        public Dialog onCreateDialog(Bundle savedInstanceState) {
-//            // Use the current date as the default date in the picker
-//            final Calendar c = Calendar.getInstance();
-//            int year = c.get(Calendar.YEAR);
-//            int month = c.get(Calendar.MONTH);
-//            int day = c.get(Calendar.DAY_OF_MONTH);
-//
-//            // Create a new instance of DatePickerDialog and return it
-//            return new DatePickerDialog(getActivity(), this, year, month, day);
-//        }
-//
-//        @Override
-//        public void onDateSet(DatePicker datePicker, int year, int month, int day){
-//            mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
-//
-//        }
-//        public void showDatePickerDialog(View v) {
-//            DialogFragment newFragment = new DatePickerFragment();
-//            newFragment.show(this.getFragmentManager(), "datePicker");
-//        }
-//    }
-
+    Button mPickDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.diary_main);
 
-//        final Calendar c = Calendar.getInstance();
-//        int year = c.get(Calendar.YEAR);
-//        int month = c.get(Calendar.MONTH);
-//        int day = c.get(Calendar.DAY_OF_MONTH);
-////        mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
+
         mAddToDiaryButton1 = (Button) findViewById(R.id.breakfastAdd);
         mAddToDiaryButton2 = (Button) findViewById(R.id.lunchAdd);
         mAddToDiaryButton3 = (Button) findViewById(R.id.supperAdd);
+        mPickDate = (Button) findViewById(R.id.pickDate);
 
         final SqlHandler DB = ((MainApplication)getApplication()).DB;
 
@@ -94,13 +66,19 @@ public class DiarySummary extends AppCompatActivity {
             }
         });
 
+        mPickDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog(view);
+            }
+        });
 
 
         ListView listView1 = (ListView) findViewById(R.id.breakfast);
         ListView listView2 = (ListView) findViewById(R.id.lunch);
         ListView listView3 = (ListView) findViewById(R.id.supper);
 
-//        ArrayList<DiaryEntry> entries = DB.getBreakfastEntries();
         ArrayList<DiaryEntry> breakfast_entries = DB.getBreakfastEntries();
         ArrayList<DiaryEntry> lunch_entries = DB.getLunchEntries();
         ArrayList<DiaryEntry> supper_entries = DB.getSupperEntries();
@@ -120,4 +98,10 @@ public class DiarySummary extends AppCompatActivity {
 
 
     }
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new EditDiary.DatePickerFragment();
+        newFragment.show(this.getFragmentManager(), "datePicker");
+    }
+
+
 }
