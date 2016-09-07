@@ -66,14 +66,23 @@ public class DiarySummary extends AppCompatActivity {
         ListView listView2 = (ListView) findViewById(R.id.lunch);
         ListView listView3 = (ListView) findViewById(R.id.supper);
 
-        ArrayList<DiaryEntry> entries = DB.getAllEntries();
+//        ArrayList<DiaryEntry> entries = DB.getBreakfastEntries();
+        ArrayList<DiaryEntry> breakfast_entries = DB.getBreakfastEntries();
+        ArrayList<DiaryEntry> lunch_entries = DB.getLunchEntries();
+        ArrayList<DiaryEntry> supper_entries = DB.getSupperEntries();
 
-        ArrayAdapter<DiaryEntry> adapter = new ArrayAdapter<DiaryEntry>(this,
-                android.R.layout.simple_list_item_1, entries);
+        ArrayAdapter<DiaryEntry> adapter_breakfast = new ArrayAdapter<DiaryEntry>(this,
+                android.R.layout.simple_list_item_1, breakfast_entries);
 
-        listView1.setAdapter(adapter);
-        listView2.setAdapter(adapter);
-        listView3.setAdapter(adapter);
+        ArrayAdapter<DiaryEntry> adapter_lunch = new ArrayAdapter<DiaryEntry>(this,
+                android.R.layout.simple_list_item_1, lunch_entries);
+
+        ArrayAdapter<DiaryEntry> adapter_supper = new ArrayAdapter<DiaryEntry>(this,
+                android.R.layout.simple_list_item_1, supper_entries);
+
+        listView1.setAdapter(adapter_breakfast);
+        listView2.setAdapter(adapter_lunch);
+        listView3.setAdapter(adapter_supper);
 
 
     }

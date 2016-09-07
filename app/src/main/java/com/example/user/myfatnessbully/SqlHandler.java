@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +107,7 @@ public class SqlHandler extends SQLiteOpenHelper {
                 diaryEntry.setFoodType(cursor.getString(1));
                 diaryEntry.setCalories(cursor.getInt(2));
                 diaryEntry.setDate(cursor.getString(3));
+                Log.d("sqlhandler", cursor.getString(4) );
                 diaryEntry.setCategory(cursor.getString(4));
                 // Adding contact to list
                 entriesList.add(diaryEntry);
@@ -117,10 +119,10 @@ public class SqlHandler extends SQLiteOpenHelper {
     }
 
     // Getting Breakfast
-    public ArrayList<DiaryEntry> getAllEntries() {
-        ArrayList<DiaryEntry> entriesList = new ArrayList<DiaryEntry>();
+    public ArrayList<DiaryEntry> getBreakfastEntries() {
+        ArrayList<DiaryEntry> breakfastList = new ArrayList<DiaryEntry>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES;
+        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES +" WHERE "+ KEY_CATEGORY + " = \"Breakfast\" ";
 
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor cursor = DB.rawQuery(selectQuery, null);
@@ -135,12 +137,66 @@ public class SqlHandler extends SQLiteOpenHelper {
                 diaryEntry.setDate(cursor.getString(3));
                 diaryEntry.setCategory(cursor.getString(4));
                 // Adding contact to list
-                entriesList.add(diaryEntry);
+                breakfastList.add(diaryEntry);
             } while (cursor.moveToNext());
         }
 
         // return contact list
-        return entriesList;
+        return breakfastList;
+    }
+
+    // Getting Lunch
+    public ArrayList<DiaryEntry> getLunchEntries() {
+        ArrayList<DiaryEntry> lunchList = new ArrayList<DiaryEntry>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES +" WHERE "+ KEY_CATEGORY + " = \"Lunch\"";
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DiaryEntry diaryEntry = new DiaryEntry();
+                diaryEntry.setID(Integer.parseInt(cursor.getString(0)));
+                diaryEntry.setFoodType(cursor.getString(1));
+                diaryEntry.setCalories(cursor.getInt(2));
+                diaryEntry.setDate(cursor.getString(3));
+                diaryEntry.setCategory(cursor.getString(4));
+                // Adding contact to list
+                lunchList.add(diaryEntry);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return lunchList;
+    }
+
+    // Getting Supper
+    public ArrayList<DiaryEntry> getSupperEntries() {
+        ArrayList<DiaryEntry> supperList = new ArrayList<DiaryEntry>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES +" WHERE "+ KEY_CATEGORY + " = \"Supper\"";
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DiaryEntry diaryEntry = new DiaryEntry();
+                diaryEntry.setID(Integer.parseInt(cursor.getString(0)));
+                diaryEntry.setFoodType(cursor.getString(1));
+                diaryEntry.setCalories(cursor.getInt(2));
+                diaryEntry.setDate(cursor.getString(3));
+                diaryEntry.setCategory(cursor.getString(4));
+                // Adding contact to list
+                supperList.add(diaryEntry);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return supperList;
     }
 
     // Getting entries Count

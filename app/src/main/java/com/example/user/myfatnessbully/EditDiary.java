@@ -89,11 +89,9 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
                 }
             });
 
-        // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.category);
 
         // Spinner click listener
-        spinner.setOnItemSelectedListener(this);
+        mCategory.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
@@ -111,7 +109,7 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
+        mCategory.setAdapter(dataAdapter);
 }
 
         @Override
