@@ -19,6 +19,7 @@
                 />
 
             <Button
+                android:id="@+id/breakfastAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right" />
@@ -35,6 +36,7 @@
                 android:layout_height="69dp"
                 android:text="@string/lunch"/>
             <Button
+                android:id="@+id/lunchAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right" />
@@ -50,6 +52,7 @@
                 android:layout_height="75dp"
                 android:text="@string/supper"/>
             <Button
+                android:id="@+id/supperAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right" />

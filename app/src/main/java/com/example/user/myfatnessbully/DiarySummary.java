@@ -3,11 +3,13 @@ package com.example.user.myfatnessbully;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +21,9 @@ import java.util.Calendar;
  * Created by user on 04/09/2016.
  */
 public class DiarySummary extends AppCompatActivity {
-
+    Button mAddToDiaryButton1;
+    Button mAddToDiaryButton2;
+    Button mAddToDiaryButton3;
 //    static TextView mDateEdit;
 //
 //    public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -57,8 +61,38 @@ public class DiarySummary extends AppCompatActivity {
 //        int month = c.get(Calendar.MONTH);
 //        int day = c.get(Calendar.DAY_OF_MONTH);
 ////        mDateEdit.setText(day + "/" + (month + 1) + "/" + year);
+        mAddToDiaryButton1 = (Button) findViewById(R.id.breakfastAdd);
+        mAddToDiaryButton2 = (Button) findViewById(R.id.lunchAdd);
+        mAddToDiaryButton3 = (Button) findViewById(R.id.supperAdd);
 
         final SqlHandler DB = ((MainApplication)getApplication()).DB;
+
+        mAddToDiaryButton1.setOnClickListener(new View.OnClickListener() {
+
+          @Override
+          public void onClick(View view) {
+              Intent intent = new Intent(DiarySummary.this, EditDiary.class);
+              startActivity(intent);
+          }
+        });
+
+        mAddToDiaryButton2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DiarySummary.this, EditDiary.class);
+                startActivity(intent);
+            }
+        });
+
+        mAddToDiaryButton3.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DiarySummary.this, EditDiary.class);
+                startActivity(intent);
+            }
+        });
 
 
 

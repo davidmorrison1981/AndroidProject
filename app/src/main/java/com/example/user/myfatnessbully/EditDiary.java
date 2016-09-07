@@ -77,7 +77,7 @@ public class EditDiary extends AppCompatActivity implements AdapterView.OnItemSe
                final SqlHandler DB =((MainApplication)getApplication()).DB;
 
 //              Retrieved from the onCreate method
-               String foodType = mFoodInput.getText().toString();
+                String foodType = mFoodInput.getText().toString();
                 Integer calories = Integer.parseInt(mCalorieInput.getText().toString());
                 String date = mDateEdit.getText().toString();
                 String category = mCategory.getSelectedItem().toString();
