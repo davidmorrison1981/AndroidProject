@@ -37,43 +37,44 @@ public class SqlHandler extends SQLiteOpenHelper {
 
     // Creating Tables
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase DB) {
         String CREATE_DIARY_TABLE = " CREATE TABLE " + TABLE_ENTRIES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_FOOD + " TEXT, " +
-                KEY_CALORIES + " INTEGER, " + KEY_DATE + " TEXT " + KEY_CATEGORY + " TEXT "+ ")";
-        db.execSQL(CREATE_DIARY_TABLE);
+                KEY_CALORIES + " INTEGER, " + KEY_DATE + " TEXT, " + KEY_CATEGORY + " TEXT "+ ")";
+        DB.execSQL(CREATE_DIARY_TABLE);
     }
 
     // Upgrading database
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase DB, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL(" DROP TABLE IF EXISTS " + TABLE_ENTRIES);
+        DB.execSQL(" DROP TABLE IF EXISTS " + TABLE_ENTRIES);
 
         // Create tables again
-        onCreate(db);
+        onCreate(DB);
     }
 
     public void addToDiary(DiaryEntry diaryEntry) {
-            SQLiteDatabase db = this.getWritableDatabase();
+            SQLiteDatabase DB = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
+            values.put(KEY_ID, diaryEntry.getID()); // ID
             values.put(KEY_FOOD, diaryEntry.getFoodType()); // Food Type
             values.put(KEY_CALORIES, diaryEntry.getCalories()); // Calories
             values.put(KEY_DATE, diaryEntry.getDate()); // Date
             values.put(KEY_CATEGORY, diaryEntry.getCategory()); // Category
 
             // Inserting Row
-            db.insert(TABLE_ENTRIES, null, values);
-            db.close(); // Closing database connection
+            DB.insert(TABLE_ENTRIES, "null", values);
+            DB.close(); // Closing database connection
 
     }
 
     // Getting single row
     public DiaryEntry getDiaryEntry(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase DB = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_ENTRIES, new String[]{KEY_ID,
+        Cursor cursor = DB.query(TABLE_ENTRIES, new String[]{KEY_ID,
                         KEY_FOOD, KEY_CALORIES, KEY_DATE, KEY_CATEGORY}, KEY_ID + "=? ",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
@@ -95,8 +96,8 @@ public class SqlHandler extends SQLiteOpenHelper {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_ENTRIES;
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
@@ -119,8 +120,8 @@ public class SqlHandler extends SQLiteOpenHelper {
     // Getting entries Count
     public int getEntriesCount() {
         String countQuery = "SELECT  * FROM " + TABLE_ENTRIES;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
+        SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.rawQuery(countQuery, null);
         cursor.close();
 
         // return count
@@ -129,7 +130,7 @@ public class SqlHandler extends SQLiteOpenHelper {
 
     // Updating single contact
     public int updateDiaryEntry(DiaryEntry diaryEntry) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase DB = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_FOOD, diaryEntry.getFoodType()); // Food Type
@@ -138,16 +139,16 @@ public class SqlHandler extends SQLiteOpenHelper {
         values.put(KEY_CATEGORY, diaryEntry.getCategory()); // Category
 
         // updating row
-        return db.update(TABLE_ENTRIES, values, KEY_ID + " = ?",
+        return DB.update(TABLE_ENTRIES, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(diaryEntry.getID())});
     }
 
     // Deleting single  row
     public void deleteDiaryEntry(DiaryEntry diaryEntry) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_ENTRIES, KEY_ID + " = ?",
+        SQLiteDatabase DB = this.getWritableDatabase();
+        DB.delete(TABLE_ENTRIES, KEY_ID + " = ?",
                 new String[]{String.valueOf(diaryEntry.getID())});
-        db.close();
+        DB.close();
     }
 
 }

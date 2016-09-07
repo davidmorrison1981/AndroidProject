@@ -15,5 +15,7 @@
     <string name="breakfast">Breakfast goes here</string>
     <string name="lunch">Lunch goes here</string>
     <string name="supper">Supper goes here</string>
+    <string name="target_cals">Target</string>
+    <string name="remaining_cals">Remaining</string>
 
 </resources>
